@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3cot5p3pwi2k"]
+
+[ext_resource type="Script" uid="uid://e4cvcavllo4v" path="res://Scripts/object.gd" id="1_h806f"]
+[ext_resource type="Texture2D" uid="uid://bfisvak1ytajy" path="res://ASSETS/Tilesets/Box.png" id="1_ufb5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h806f"]
+size = Vector2(46, 46)
+
+[node name="Object" type="RigidBody2D"]
+script = ExtResource("1_h806f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ufb5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h806f")
