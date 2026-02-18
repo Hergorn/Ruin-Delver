@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg1uc3btim2d1"]
+[gd_scene load_steps=4 format=4 uid="uid://dg1uc3btim2d1"]
 
 [ext_resource type="Texture2D" uid="uid://ck0nbrnk7sqmw" path="res://ASSETS/Tilesets/Tiles.png" id="1_ka2pl"]
 
@@ -7,51 +7,94 @@ texture = ExtResource("1_ka2pl")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/terrain_set = 0
-0:0/0/terrain = 2
+0:0/0/terrains_peering_bit/bottom_side = 0
 1:0/0 = 0
 1:0/0/terrain_set = 0
-1:0/0/terrains_peering_bit/bottom_right_corner = 2
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
 2:0/0 = 0
 2:0/0/terrain_set = 0
-2:0/0/terrains_peering_bit/bottom_left_corner = 2
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
 0:1/0 = 0
 0:1/0/terrain_set = 0
+0:1/0/terrains_peering_bit/right_side = 0
 0:1/0/terrains_peering_bit/bottom_right_corner = 1
+0:1/0/terrains_peering_bit/bottom_side = 3
+0:1/0/terrains_peering_bit/bottom_left_corner = 3
+0:1/0/terrains_peering_bit/top_left_corner = 4
+0:1/0/terrains_peering_bit/top_side = 0
 0:1/0/terrains_peering_bit/top_right_corner = 0
 1:1/0 = 0
 1:1/0/terrain_set = 0
+1:1/0/terrains_peering_bit/right_side = 0
 1:1/0/terrains_peering_bit/bottom_right_corner = 1
+1:1/0/terrains_peering_bit/bottom_side = 1
 1:1/0/terrains_peering_bit/bottom_left_corner = 1
+1:1/0/terrains_peering_bit/left_side = 0
 1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
 1:1/0/terrains_peering_bit/top_right_corner = 0
 2:1/0 = 0
 2:1/0/terrain_set = 0
+2:1/0/terrains_peering_bit/right_side = 4
+2:1/0/terrains_peering_bit/bottom_right_corner = 3
+2:1/0/terrains_peering_bit/bottom_side = 3
+2:1/0/terrains_peering_bit/bottom_left_corner = 1
+2:1/0/terrains_peering_bit/left_side = 0
 2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
 0:2/0 = 0
 0:2/0/terrain_set = 0
-0:2/0/terrains_peering_bit/bottom_right_corner = 1
+0:2/0/terrains_peering_bit/right_side = 1
+0:2/0/terrains_peering_bit/bottom_side = 3
+0:2/0/terrains_peering_bit/bottom_left_corner = 3
+0:2/0/terrains_peering_bit/top_left_corner = 3
+0:2/0/terrains_peering_bit/top_side = 3
 0:2/0/terrains_peering_bit/top_right_corner = 1
+1:2/next_alternative_id = 2
 1:2/0 = 0
 1:2/0/terrain_set = 0
-1:2/0/terrain = 1
-1:2/0/terrains_peering_bit/bottom_right_corner = 1
-1:2/0/terrains_peering_bit/bottom_left_corner = 1
+1:2/0/terrains_peering_bit/right_side = 1
+1:2/0/terrains_peering_bit/bottom_right_corner = 5
+1:2/0/terrains_peering_bit/bottom_side = 1
+1:2/0/terrains_peering_bit/bottom_left_corner = 5
+1:2/0/terrains_peering_bit/left_side = 1
 1:2/0/terrains_peering_bit/top_left_corner = 1
+1:2/0/terrains_peering_bit/top_side = 1
 1:2/0/terrains_peering_bit/top_right_corner = 1
+1:2/1 = 1
+1:2/1/terrain_set = 0
+1:2/1/terrains_peering_bit/right_side = 1
+1:2/1/terrains_peering_bit/bottom_right_corner = 5
+1:2/1/terrains_peering_bit/bottom_side = 1
+1:2/1/terrains_peering_bit/bottom_left_corner = 5
+1:2/1/terrains_peering_bit/left_side = 1
+1:2/1/terrains_peering_bit/top_left_corner = 5
+1:2/1/terrains_peering_bit/top_side = 1
+1:2/1/terrains_peering_bit/top_right_corner = 5
 2:2/0 = 0
 2:2/0/terrain_set = 0
-2:2/0/terrains_peering_bit/bottom_left_corner = 1
+2:2/0/terrains_peering_bit/bottom_right_corner = 3
+2:2/0/terrains_peering_bit/bottom_side = 3
+2:2/0/terrains_peering_bit/left_side = 1
 2:2/0/terrains_peering_bit/top_left_corner = 1
+2:2/0/terrains_peering_bit/top_side = 3
+2:2/0/terrains_peering_bit/top_right_corner = 3
 
 [sub_resource type="TileSet" id="TileSet_1vevx"]
 tile_size = Vector2i(48, 48)
-terrain_set_0/mode = 1
+terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Ground_Grass"
-terrain_set_0/terrain_0/color = Color(0.501961, 1, 0.25098, 1)
+terrain_set_0/terrain_0/color = Color(0.501961, 0, 1, 1)
 terrain_set_0/terrain_1/name = "Dirt"
-terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+terrain_set_0/terrain_1/color = Color(0.501961, 1, 0.25098, 1)
 terrain_set_0/terrain_2/name = "Bushes"
 terrain_set_0/terrain_2/color = Color(0.470588, 0, 0.25098, 1)
+terrain_set_0/terrain_3/name = "Outerrior"
+terrain_set_0/terrain_3/color = Color(0, 0, 0.25098, 1)
+terrain_set_0/terrain_4/name = "Matcher"
+terrain_set_0/terrain_4/color = Color(0.282353, 0.501961, 1, 1)
+terrain_set_0/terrain_5/name = "Matcher2"
+terrain_set_0/terrain_5/color = Color(0.25098, 0, 0.843137, 1)
 sources/0 = SubResource("TileSetAtlasSource_k5tye")
 
 [node name="MainMap" type="Node2D"]
@@ -66,6 +109,8 @@ format = 2
 [node name="Interactables" type="Node2D" parent="MapHolder/Map"]
 
 [node name="Ground" type="TileMapLayer" parent="MapHolder/Map"]
+position = Vector2(132, 6)
+tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAP//AAABAAAAAAABAP//AAACAAAAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAACAP//AAAAAAEAAAAEAAAAAAABAAEAAAADAP//AAABAAEAAAAEAP//AAABAAEAAAADAP7/AAAAAAEAAAACAP7/AAAAAAAAAAAGAAAAAAACAAEAAAAFAAAAAAABAAEAAAAEAP7/AAACAAEAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP//AAACAAEAAAAFAP7/AAAAAAAAAAAFAAEAAAABAAIAAAAGAAEAAAACAAIAAAAEAAEAAAABAAIAAAADAAEAAAABAAIAAAACAAEAAAABAAIAAAABAAEAAAABAAIAAAAAAAEAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_1vevx")
 
 [node name="Menus" type="CanvasLayer" parent="."]
