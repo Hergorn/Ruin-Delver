@@ -28,3 +28,4 @@ func checkColisions():
 		var collider = collision.get_collider()
 		if collider.is_in_group("moveable") and abs(collider.get_linear_velocity().x) < maxVelocity:
 			collider.apply_central_impulse(collision.get_normal() * -pushForce)
+			
