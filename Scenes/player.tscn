@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qj0ekajddbjr"]
+[gd_scene format=3 uid="uid://qj0ekajddbjr"]
 
 [ext_resource type="Script" uid="uid://dus2sfc82h77p" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://blgnaohv2rbs8" path="res://ASSETS/Characters/Korrk.png" id="2_6t5aa"]
@@ -85,17 +85,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(18, 46)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=706892571]
 floor_snap_length = 19.0
 script = ExtResource("1_cvnsp")
 speed = 150
 maxVelocity = 100
 pushForce = 90
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1351693717]
 sprite_frames = SubResource("SpriteFrames_pu2lt")
 animation = &"RIGHT"
 speed_scale = 0.9
 
-[node name="CollisionDown" type="CollisionShape2D" parent="."]
+[node name="PlayerCollider" type="CollisionShape2D" parent="." unique_id=505232968]
 shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="RayCastDownLeft" type="RayCast2D" parent="." unique_id=1122602427]
+position = Vector2(0, 23)
+target_position = Vector2(-10, 0)
+
+[node name="RayCastDownRight" type="RayCast2D" parent="." unique_id=93476988]
+position = Vector2(0, 23)
+target_position = Vector2(10, 0)
+
+[node name="RayCastUpLeft" type="RayCast2D" parent="." unique_id=1727953792]
+target_position = Vector2(-10, 0)
+
+[node name="RayCastUpRight" type="RayCast2D" parent="." unique_id=1304152240]
+target_position = Vector2(10, 0)

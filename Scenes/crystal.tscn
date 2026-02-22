@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://3565ud430x4y"]
+
+[ext_resource type="Texture2D" uid="uid://bgvbxvfpsyg87" path="res://ASSETS/Tilesets/Temple.png" id="1_c61q8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vacj6"]
+atlas = ExtResource("1_c61q8")
+region = Rect2(192, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfrgv"]
+atlas = ExtResource("1_c61q8")
+region = Rect2(240, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nfb3"]
+atlas = ExtResource("1_c61q8")
+region = Rect2(192, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8uk5"]
+atlas = ExtResource("1_c61q8")
+region = Rect2(240, 240, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yg7jq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vacj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfrgv")
+}],
+"loop": true,
+"name": &"horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nfb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8uk5")
+}],
+"loop": true,
+"name": &"vertical",
+"speed": 5.0
+}]
+
+[node name="crystal" type="AnimatedSprite2D" unique_id=1980050896]
+sprite_frames = SubResource("SpriteFrames_yg7jq")
+animation = &"horizontal"
