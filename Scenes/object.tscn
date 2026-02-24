@@ -7,6 +7,7 @@
 size = Vector2(44, 44)
 
 [node name="Object" type="RigidBody2D" unique_id=1576696864]
+gravity_scale = 3.051
 script = ExtResource("1_h806f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1553012009]

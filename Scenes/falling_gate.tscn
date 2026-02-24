@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dftdrrrg8hiy2"]
+
+[ext_resource type="Texture2D" uid="uid://db2ap3v2chqxr" path="res://ASSETS/Tilesets/fallgate.png" id="1_4c5t3"]
+[ext_resource type="Script" uid="uid://c53xjct8il4a0" path="res://Scripts/falling_gate.gd" id="1_i5q7r"]
+[ext_resource type="Texture2D" uid="uid://bgvbxvfpsyg87" path="res://ASSETS/Tilesets/Temple.png" id="2_i5q7r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opbxr"]
+atlas = ExtResource("2_i5q7r")
+region = Rect2(240, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yrmc"]
+atlas = ExtResource("2_i5q7r")
+region = Rect2(240, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsoux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opbxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yrmc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="fallingGate" type="Node2D" unique_id=193519265]
+script = ExtResource("1_i5q7r")
+
+[node name="gate" type="Node2D" parent="." unique_id=1024998874]
+
+[node name="gateBody" type="StaticBody2D" parent="gate" unique_id=173048053]
+position = Vector2(0, -49)
+
+[node name="gateSprite" type="Sprite2D" parent="gate/gateBody" unique_id=183090683]
+texture = ExtResource("1_4c5t3")
+
+[node name="gateCollision" type="CollisionPolygon2D" parent="gate/gateBody" unique_id=1961456155]
+polygon = PackedVector2Array(0, -71, 17, -71, 23, -64, 23, 40, 20, 43, 20, 47, 11, 55, 8, 58, 8, 62, 4, 65, -4, 65, -8, 62, -8, 58, -20, 47, -20, 43, -23, 40, -23, -64, -17, -71)
+
+[node name="mechanism" type="StaticBody2D" parent="." unique_id=72320467]
+
+[node name="mechanismAnimation" type="AnimatedSprite2D" parent="mechanism" unique_id=80794233]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wsoux")
+frame_progress = 0.41699058
+
+[node name="mechanismCollision" type="CollisionPolygon2D" parent="mechanism" unique_id=1246388628]
+polygon = PackedVector2Array(0, 23, -23, 23, -23, 13, -13, 4, 13, 4, 23, 13, 23, 23)

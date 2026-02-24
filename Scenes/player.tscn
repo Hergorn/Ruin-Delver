@@ -3,57 +3,54 @@
 [ext_resource type="Script" uid="uid://dus2sfc82h77p" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://blgnaohv2rbs8" path="res://ASSETS/Characters/Korrk.png" id="2_6t5aa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("2_6t5aa")
 region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
 atlas = ExtResource("2_6t5aa")
 region = Rect2(0, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
 atlas = ExtResource("2_6t5aa")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
 atlas = ExtResource("2_6t5aa")
 region = Rect2(144, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
 atlas = ExtResource("2_6t5aa")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pu2lt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vgqql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fkybt")
+"texture": SubResource("AtlasTexture_cvnsp")
 }],
 "loop": true,
-"name": &"DOWN",
+"name": &"IDLE LEFT",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x3wgy")
+"texture": SubResource("AtlasTexture_6t5aa")
+}],
+"loop": true,
+"name": &"IDLE RIGHT",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3smsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
 }],
 "loop": true,
 "name": &"LEFT",
@@ -61,24 +58,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8erm5")
+"texture": SubResource("AtlasTexture_f1ek2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ek2")
+"texture": SubResource("AtlasTexture_8erm5")
 }],
 "loop": true,
 "name": &"RIGHT",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1dd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gymyn")
-}],
-"loop": true,
-"name": &"UP",
 "speed": 5.0
 }]
 
@@ -88,7 +74,6 @@ size = Vector2(18, 46)
 [node name="Player" type="CharacterBody2D" unique_id=706892571]
 floor_snap_length = 19.0
 script = ExtResource("1_cvnsp")
-speed = 150
 maxVelocity = 100
 pushForce = 90
 
@@ -112,4 +97,29 @@ target_position = Vector2(10, 0)
 target_position = Vector2(-10, 0)
 
 [node name="RayCastUpRight" type="RayCast2D" parent="." unique_id=1304152240]
+target_position = Vector2(10, 0)
+
+[node name="RayCastBottomLeft" type="RayCast2D" parent="." unique_id=513909260]
+position = Vector2(-9, 16)
+target_position = Vector2(0, 8)
+
+[node name="RayCastBottomRight" type="RayCast2D" parent="." unique_id=117923268]
+position = Vector2(9, 16)
+target_position = Vector2(0, 8)
+
+[node name="Label" type="Label" parent="." unique_id=1970481631]
+offset_left = -51.0
+offset_top = -47.0
+offset_right = 51.0
+offset_bottom = -24.0
+text = "TEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RayCastTopLeft" type="RayCast2D" parent="." unique_id=1613040167]
+position = Vector2(0, -23)
+target_position = Vector2(-10, 0)
+
+[node name="RayCastTopRight" type="RayCast2D" parent="." unique_id=20772065]
+position = Vector2(0, -23)
 target_position = Vector2(10, 0)
