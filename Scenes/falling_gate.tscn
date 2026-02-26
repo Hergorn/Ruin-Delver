@@ -27,7 +27,11 @@ animations = [{
 }]
 
 [node name="fallingGate" type="Node2D" unique_id=193519265]
+position = Vector2(122, 124)
 script = ExtResource("1_i5q7r")
+gateStartDirection = "top"
+gateOpenDirection = "left"
+mechanismDirection = "bottom"
 
 [node name="gate" type="Node2D" parent="." unique_id=1024998874]
 
@@ -43,7 +47,6 @@ polygon = PackedVector2Array(0, -71, 17, -71, 23, -64, 23, 40, 20, 43, 20, 47, 1
 [node name="mechanism" type="StaticBody2D" parent="." unique_id=72320467]
 
 [node name="mechanismAnimation" type="AnimatedSprite2D" parent="mechanism" unique_id=80794233]
-texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wsoux")
 frame_progress = 0.41699058
 
