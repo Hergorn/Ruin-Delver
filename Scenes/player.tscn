@@ -72,10 +72,11 @@ animations = [{
 size = Vector2(18, 46)
 
 [node name="Player" type="CharacterBody2D" unique_id=706892571]
-floor_snap_length = 19.0
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 1.2217305
+floor_snap_length = 0.0
 script = ExtResource("1_cvnsp")
-maxVelocity = 100
-pushForce = 90
 
 [node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1351693717]
 sprite_frames = SubResource("SpriteFrames_pu2lt")
@@ -91,12 +92,6 @@ target_position = Vector2(-10, 0)
 
 [node name="RayCastDownRight" type="RayCast2D" parent="." unique_id=93476988]
 position = Vector2(0, 23)
-target_position = Vector2(10, 0)
-
-[node name="RayCastUpLeft" type="RayCast2D" parent="." unique_id=1727953792]
-target_position = Vector2(-10, 0)
-
-[node name="RayCastUpRight" type="RayCast2D" parent="." unique_id=1304152240]
 target_position = Vector2(10, 0)
 
 [node name="RayCastBottomLeft" type="RayCast2D" parent="." unique_id=513909260]
@@ -116,10 +111,4 @@ text = "TEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RayCastTopLeft" type="RayCast2D" parent="." unique_id=1613040167]
-position = Vector2(0, -23)
-target_position = Vector2(-10, 0)
-
-[node name="RayCastTopRight" type="RayCast2D" parent="." unique_id=20772065]
-position = Vector2(0, -23)
-target_position = Vector2(10, 0)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1619314396]

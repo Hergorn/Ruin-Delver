@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://du0yhdqw7mtx"]
+
+[ext_resource type="Texture2D" uid="uid://ck8fydggkfawr" path="res://ASSETS/Tilesets/Canons.png" id="1_45guf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kokb4"]
+atlas = ExtResource("1_45guf")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3st8w"]
+atlas = ExtResource("1_45guf")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p17r"]
+atlas = ExtResource("1_45guf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yvoj"]
+atlas = ExtResource("1_45guf")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8j21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3st8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p17r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yvoj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="StaticCanon" type="Node2D" unique_id=1862513689]
+
+[node name="Canon" type="Sprite2D" parent="." unique_id=27396600]
+texture = SubResource("AtlasTexture_kokb4")
+
+[node name="lineFocus" type="Node2D" parent="." unique_id=306907210]
+position = Vector2(0, -21)
+
+[node name="targetLine0" type="AnimatedSprite2D" parent="lineFocus" unique_id=1114203328]
+position = Vector2(2.2737365e-13, -66.56251)
+scale = Vector2(0.484, 2.7682295)
+sprite_frames = SubResource("SpriteFrames_r8j21")
+frame_progress = 0.5507167
