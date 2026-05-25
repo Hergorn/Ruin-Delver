@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dftdrrrg8hiy2" path="res://Scenes/falling_gate.tscn" id="4_f4xrl"]
 [ext_resource type="PackedScene" uid="uid://3565ud430x4y" path="res://Scenes/crystal.tscn" id="5_nfd1w"]
 [ext_resource type="PackedScene" uid="uid://cj02x1g43ik03" path="res://Scenes/conveyor.tscn" id="5_o0jjj"]
+[ext_resource type="PackedScene" uid="uid://dn2pac8ej6fo2" path="res://Scenes/canon.tscn" id="6_uxcei"]
 
-[node name="MainMap" type="Node2D" unique_id=820204691 groups=["conveyor"]]
+[node name="MainMap" type="Node2D" unique_id=820204691]
 
 [node name="MapHolder" type="Node2D" parent="." unique_id=244456292]
 
@@ -24,7 +25,7 @@ tile_set = ExtResource("1_1vevx")
 [node name="Interactables" type="Node2D" parent="MapHolder/Map" unique_id=205051551]
 position = Vector2(-153, -70)
 
-[node name="Object" parent="MapHolder/Map/Interactables" unique_id=2085304473 groups=["moveable"] instance=ExtResource("3_1vevx")]
+[node name="Object" parent="MapHolder/Map/Interactables" unique_id=2085304473 instance=ExtResource("3_1vevx")]
 position = Vector2(448, -12)
 mass = 2.0
 gravity_scale = 1.0
@@ -45,6 +46,10 @@ needsSwitch = true
 isOn = false
 length = 4
 id = 1
+
+[node name="Canon" parent="MapHolder/Map/Interactables" unique_id=1035115936 instance=ExtResource("6_uxcei")]
+position = Vector2(402, 46)
+moveable = true
 
 [node name="Player" parent="MapHolder/Map" unique_id=383691327 instance=ExtResource("2_k5tye")]
 position = Vector2(189, -83)

@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Die Reihenfolge der RayCasts ist WICHTIG! links unten > oben > rechts unten > oben
 @onready var rayCasts : Array[RayCast2D] = [rayCastDownLeft, rayCastDownRight]
 var currentState : String = "idle"
+var interacting : bool = false
 
 #DEBUG
 @onready var label = $Label
@@ -26,7 +27,9 @@ func _physics_process(delta: float) -> void:
 	checkDirection(delta)
 	
 func checkDirection(delta : float):
-	var direction : float = Input.get_axis("LEFT", "RIGHT")
+	var direction : float
+	if interacting == true: direction = 0.0
+	else: direction = Input.get_axis("LEFT", "RIGHT")
 	match direction:
 		-1.0: 
 			animation.play("LEFT")
@@ -52,26 +55,29 @@ func statemachine(direction : float, delta : float):
 	match direction:
 		0.0: currentState = "idle"
 		_: currentState = "moving"
-	if get_slide_collision_count() != 0:
-		if not rayCastBottomLeft.is_colliding() and not rayCastBottomRight.is_colliding(): 
-			currentState = "falling"
-		for i in get_slide_collision_count():
-			var collision = get_slide_collision(i)
-			var collider = collision.get_collider()
-			if collider.is_in_group("moveable"): 
-				var ray : RayCast2D
-				if rayCastBottomLeft.is_colliding(): ray = rayCastBottomLeft
-				elif rayCastBottomRight.is_colliding(): ray = rayCastBottomRight
-				var bottomCollider = ray.get_collider()
-				if bottomCollider != collider: currentState = "pushing"
-		if rayCastDownLeft.is_colliding() or rayCastDownRight.is_colliding(): 
-			if direction != 0.0: 
-				var ray : RayCast2D
-				if rayCastDownLeft.is_colliding(): ray = rayCastDownLeft
-				elif rayCastDownRight.is_colliding(): ray = rayCastDownRight
-				var collider = ray.get_collider()
-				if not collider.is_in_group("moveable"): currentState = "sloping"
-	else: currentState = "falling"
+	if interacting == true: currentState = "interacting"
+	else:
+		if get_slide_collision_count() != 0:
+			if not rayCastBottomLeft.is_colliding() and not rayCastBottomRight.is_colliding(): 
+				currentState = "falling"
+			for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				var collider = collision.get_collider()
+				if collider.is_in_group("moveable"): 
+					var ray : RayCast2D
+					if rayCastBottomLeft.is_colliding(): ray = rayCastBottomLeft
+					elif rayCastBottomRight.is_colliding(): ray = rayCastBottomRight
+					if ray != null:
+						var bottomCollider = ray.get_collider()
+						if bottomCollider != collider: currentState = "pushing"
+			if rayCastDownLeft.is_colliding() or rayCastDownRight.is_colliding(): 
+				if direction != 0.0: 
+					var ray : RayCast2D
+					if rayCastDownLeft.is_colliding(): ray = rayCastDownLeft
+					elif rayCastDownRight.is_colliding(): ray = rayCastDownRight
+					var collider = ray.get_collider()
+					if not collider.is_in_group("moveable"): currentState = "sloping"
+		else: currentState = "falling"
 	label.text = currentState
 	var moveSpeed : int = defaultSpeed
 	match currentState:
@@ -84,7 +90,8 @@ func statemachine(direction : float, delta : float):
 		"sloping": 
 			slope()
 			moveSpeed = 2 * defaultSpeed
-	move(direction, delta, moveSpeed)
+		"interacting": pass #interactionsanimation?
+	if interacting == false: move(direction, delta, moveSpeed)
 	
 func push():
 	for i in get_slide_collision_count():
