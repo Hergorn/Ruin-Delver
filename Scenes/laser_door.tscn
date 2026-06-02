@@ -1,0 +1,232 @@
+[gd_scene format=3 uid="uid://dltocjjww6vgv"]
+
+[ext_resource type="Script" uid="uid://d1ydrtxy5skon" path="res://Scripts/laser_door.gd" id="1_lobue"]
+[ext_resource type="Texture2D" uid="uid://coy1qt0so71j8" path="res://ASSETS/Tilesets/LaserDoors.png" id="2_0gn2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8pia"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgn3u"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01uqp"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w3v8"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqvlv"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0uf1"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jw0qr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8pia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgn3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01uqp")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w3v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqvlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0uf1")
+}],
+"loop": true,
+"name": &"red",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhpu5"]
+size = Vector2(39, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owj5l"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww66n"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lup5e"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2thks"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xby7e"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(192, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j584h"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(192, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mc0eb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owj5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww66n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lup5e")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2thks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xby7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j584h")
+}],
+"loop": true,
+"name": &"red",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7nsc"]
+size = Vector2(48, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25ujx"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgyj6"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxbsd"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r36mu"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v7mn"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6dwe"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(240, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chmer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25ujx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgyj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxbsd")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r36mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v7mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6dwe")
+}],
+"loop": true,
+"name": &"red",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vl32"]
+size = Vector2(39, 12)
+
+[node name="LaserDoor" type="Node2D" unique_id=1775933222]
+script = ExtResource("1_lobue")
+length = 6
+orientation = "vertical"
+color = "blue"
+
+[node name="Body" type="Node2D" parent="." unique_id=1231389767]
+
+[node name="Hidden" type="Node2D" parent="." unique_id=1318796828]
+
+[node name="FirstPart" type="AnimatedSprite2D" parent="Hidden" unique_id=998482285]
+sprite_frames = SubResource("SpriteFrames_jw0qr")
+animation = &"blue"
+
+[node name="LaserArea" type="Area2D" parent="Hidden/FirstPart" unique_id=338377304]
+
+[node name="LaserCollision" type="CollisionShape2D" parent="Hidden/FirstPart/LaserArea" unique_id=1141509634]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_bhpu5")
+
+[node name="Shooter" type="StaticBody2D" parent="Hidden/FirstPart" unique_id=1620985248]
+
+[node name="ShooterCollision" type="CollisionPolygon2D" parent="Hidden/FirstPart/Shooter" unique_id=208154715]
+polygon = PackedVector2Array(-24, 18, -24, -18, -15, -9, -15, 9)
+
+[node name="MiddlePart" type="AnimatedSprite2D" parent="Hidden" unique_id=405147914]
+position = Vector2(48, 0)
+sprite_frames = SubResource("SpriteFrames_mc0eb")
+animation = &"blue"
+
+[node name="LaserArea" type="Area2D" parent="Hidden/MiddlePart" unique_id=1533806460]
+
+[node name="LaserCollision" type="CollisionShape2D" parent="Hidden/MiddlePart/LaserArea" unique_id=1589034054]
+shape = SubResource("RectangleShape2D_e7nsc")
+
+[node name="LastPart" type="AnimatedSprite2D" parent="Hidden" unique_id=485354956]
+position = Vector2(96, 0)
+sprite_frames = SubResource("SpriteFrames_chmer")
+animation = &"blue"
+
+[node name="LaserArea" type="Area2D" parent="Hidden/LastPart" unique_id=226041460]
+
+[node name="LaserCollision" type="CollisionShape2D" parent="Hidden/LastPart/LaserArea" unique_id=1086668333]
+position = Vector2(-4.5, 0)
+shape = SubResource("RectangleShape2D_0vl32")
+
+[node name="Shooter" type="StaticBody2D" parent="Hidden/LastPart" unique_id=1151956054]
+
+[node name="ShooterCollision" type="CollisionPolygon2D" parent="Hidden/LastPart/Shooter" unique_id=1531342309]
+polygon = PackedVector2Array(24, 18, 15, 9, 15, -9, 24, -18)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1422328517]
+zoom = Vector2(1.295, 1.295)

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://jshq3hgs7ty8" path="res://Scripts/canon.gd" id="1_dqm4n"]
 [ext_resource type="Texture2D" uid="uid://ck8fydggkfawr" path="res://ASSETS/Tilesets/Canons.png" id="1_qskhg"]
 [ext_resource type="Texture2D" uid="uid://dndf3k57gy8ty" path="res://ASSETS/Tilesets/Inputs/E.png" id="3_0jbhj"]
-[ext_resource type="Texture2D" uid="uid://bfisvak1ytajy" path="res://ASSETS/Tilesets/Box.png" id="3_h5dys"]
 [ext_resource type="Texture2D" uid="uid://dk6m0rhc8cci" path="res://ASSETS/Tilesets/Inputs/A.png" id="4_nsfx8"]
 [ext_resource type="Texture2D" uid="uid://cs4ppu388kwfu" path="res://ASSETS/Tilesets/Inputs/D.png" id="5_d7n0y"]
 [ext_resource type="Texture2D" uid="uid://cnyolafvsb3bk" path="res://ASSETS/Tilesets/Inputs/Q.png" id="6_d7n0y"]
@@ -148,11 +147,6 @@ sprite_frames = SubResource("SpriteFrames_jwfgg")
 position = Vector2(0, -36)
 scale = Vector2(0.99999994, 0.99999994)
 gizmo_extents = 18.3
-
-[node name="Sprite2D" type="Sprite2D" parent="SpawnPosition" unique_id=101942344]
-visible = false
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_h5dys")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
