@@ -15,6 +15,10 @@ region = Rect2(0, 48, 48, 48)
 atlas = ExtResource("2_0gn2x")
 region = Rect2(0, 96, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lobue"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(288, 48, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w3v8"]
 atlas = ExtResource("2_0gn2x")
 region = Rect2(144, 0, 48, 48)
@@ -42,6 +46,14 @@ animations = [{
 "loop": true,
 "name": &"blue",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lobue")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -73,6 +85,10 @@ region = Rect2(48, 48, 48, 48)
 atlas = ExtResource("2_0gn2x")
 region = Rect2(48, 96, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gn2x"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(288, 96, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2thks"]
 atlas = ExtResource("2_0gn2x")
 region = Rect2(192, 0, 48, 48)
@@ -100,6 +116,14 @@ animations = [{
 "loop": true,
 "name": &"blue",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gn2x")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -131,6 +155,10 @@ region = Rect2(96, 48, 48, 48)
 atlas = ExtResource("2_0gn2x")
 region = Rect2(96, 96, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw0qr"]
+atlas = ExtResource("2_0gn2x")
+region = Rect2(288, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r36mu"]
 atlas = ExtResource("2_0gn2x")
 region = Rect2(240, 0, 48, 48)
@@ -161,6 +189,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jw0qr")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r36mu")
 }, {
 "duration": 1.0,
@@ -179,9 +215,10 @@ size = Vector2(39, 12)
 
 [node name="LaserDoor" type="Node2D" unique_id=1775933222]
 script = ExtResource("1_lobue")
-length = 6
-orientation = "vertical"
-color = "blue"
+length = 4
+orientation = "horizontal"
+color = "red"
+startingState = "on"
 
 [node name="Body" type="Node2D" parent="." unique_id=1231389767]
 
@@ -189,7 +226,7 @@ color = "blue"
 
 [node name="FirstPart" type="AnimatedSprite2D" parent="Hidden" unique_id=998482285]
 sprite_frames = SubResource("SpriteFrames_jw0qr")
-animation = &"blue"
+animation = &"off"
 
 [node name="LaserArea" type="Area2D" parent="Hidden/FirstPart" unique_id=338377304]
 
@@ -199,13 +236,10 @@ shape = SubResource("RectangleShape2D_bhpu5")
 
 [node name="Shooter" type="StaticBody2D" parent="Hidden/FirstPart" unique_id=1620985248]
 
-[node name="ShooterCollision" type="CollisionPolygon2D" parent="Hidden/FirstPart/Shooter" unique_id=208154715]
-polygon = PackedVector2Array(-24, 18, -24, -18, -15, -9, -15, 9)
-
 [node name="MiddlePart" type="AnimatedSprite2D" parent="Hidden" unique_id=405147914]
 position = Vector2(48, 0)
 sprite_frames = SubResource("SpriteFrames_mc0eb")
-animation = &"blue"
+animation = &"off"
 
 [node name="LaserArea" type="Area2D" parent="Hidden/MiddlePart" unique_id=1533806460]
 
@@ -215,7 +249,7 @@ shape = SubResource("RectangleShape2D_e7nsc")
 [node name="LastPart" type="AnimatedSprite2D" parent="Hidden" unique_id=485354956]
 position = Vector2(96, 0)
 sprite_frames = SubResource("SpriteFrames_chmer")
-animation = &"blue"
+animation = &"off"
 
 [node name="LaserArea" type="Area2D" parent="Hidden/LastPart" unique_id=226041460]
 
@@ -225,8 +259,6 @@ shape = SubResource("RectangleShape2D_0vl32")
 
 [node name="Shooter" type="StaticBody2D" parent="Hidden/LastPart" unique_id=1151956054]
 
-[node name="ShooterCollision" type="CollisionPolygon2D" parent="Hidden/LastPart/Shooter" unique_id=1531342309]
-polygon = PackedVector2Array(24, 18, 15, 9, 15, -9, 24, -18)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1422328517]
-zoom = Vector2(1.295, 1.295)
+[connection signal="body_entered" from="Hidden/FirstPart/LaserArea" to="." method="_on_laser_area_body_entered"]
+[connection signal="body_entered" from="Hidden/MiddlePart/LaserArea" to="." method="_on_laser_area_body_entered"]
+[connection signal="body_entered" from="Hidden/LastPart/LaserArea" to="." method="_on_laser_area_body_entered"]

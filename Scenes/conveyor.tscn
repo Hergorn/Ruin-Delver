@@ -169,8 +169,7 @@ height = 48.0
 [node name="conveyor" type="Node2D" unique_id=1607421010]
 script = ExtResource("1_p60iw")
 direction = "left"
-isOn = true
-length = 5
+length = 4
 speed = 50.0
 
 [node name="body" type="Node2D" parent="." unique_id=1868694909]

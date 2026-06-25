@@ -13,6 +13,7 @@ extends Node2D
 @onready var conveyorBody : Node2D = $body
 @onready var hide : Node2D = $hidden
 @onready var shapeCollision : CollisionShape2D
+@onready var idState : bool
 
 var conveyorParts : Array[StaticBody2D]
 var lastState : bool
@@ -38,8 +39,7 @@ func _ready() -> void:
 		conveyorParts.append(newPart)
 	shapeCollision.visible = false
 	#Einschalten falls kein Mechanismus betätigt werden muss
-	if needsSwitch == false and isOn == true: power(true)
-	else: power(false)
+	power(isOn)
 	lastState = isOn
 	hide.free()
 	var newHeight : float = 48 * length - 48
@@ -47,6 +47,7 @@ func _ready() -> void:
 	#COLLISION
 	shapeCollision.position.x = shapeCollision.position.x + newPosition
 	shapeCollision.shape.height = shapeCollision.shape.height + newHeight
+	idState = MechanismConnector.checkStatus(id)
 
 func power(on : bool):
 	var state : String
@@ -62,12 +63,17 @@ func power(on : bool):
 		if direction == "left": currentSpeed = currentSpeed - 2 * currentSpeed
 		part.constant_linear_velocity.x = currentSpeed
 		print(part.constant_linear_velocity.x)
-	#if state != "off": pass
 
 func _process(delta: float) -> void:
 	if needsSwitch == true:
-		if MechanismConnector.checkStatus(id) == true: isOn = true
-		elif isOn == true: isOn = false
+		if MechanismConnector.checkStatus(id) != idState:
+			toggleOn()
+			idState = MechanismConnector.checkStatus(id)
 	if isOn != lastState:
 		power(isOn)
 		lastState = isOn
+			
+func toggleOn():
+	match isOn:
+		true: isOn = false
+		false: isOn = true

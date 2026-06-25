@@ -45,7 +45,8 @@ func move(direction : float, delta : float, speed : int):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if collider.is_in_group("conveyor"): addedSpeed = collider.speed
+		if collider != null:
+			if collider.is_in_group("conveyor"): addedSpeed = collider.speed
 	speed = speed + addedSpeed
 	velocity.y += gravity * delta
 	velocity.x = direction * speed
@@ -63,20 +64,22 @@ func statemachine(direction : float, delta : float):
 			for i in get_slide_collision_count():
 				var collision = get_slide_collision(i)
 				var collider = collision.get_collider()
-				if collider.is_in_group("moveable"): 
-					var ray : RayCast2D
-					if rayCastBottomLeft.is_colliding(): ray = rayCastBottomLeft
-					elif rayCastBottomRight.is_colliding(): ray = rayCastBottomRight
-					if ray != null:
-						var bottomCollider = ray.get_collider()
-						if bottomCollider != collider: currentState = "pushing"
+				if collider != null:
+					if collider.is_in_group("moveable"): 
+						var ray : RayCast2D
+						if rayCastBottomLeft.is_colliding(): ray = rayCastBottomLeft
+						elif rayCastBottomRight.is_colliding(): ray = rayCastBottomRight
+						if ray != null:
+							var bottomCollider = ray.get_collider()
+							if bottomCollider != collider: currentState = "pushing"
 			if rayCastDownLeft.is_colliding() or rayCastDownRight.is_colliding(): 
 				if direction != 0.0: 
 					var ray : RayCast2D
 					if rayCastDownLeft.is_colliding(): ray = rayCastDownLeft
 					elif rayCastDownRight.is_colliding(): ray = rayCastDownRight
 					var collider = ray.get_collider()
-					if not collider.is_in_group("moveable"): currentState = "sloping"
+					if collider != null:
+						if not collider.is_in_group("moveable"): currentState = "sloping"
 		else: currentState = "falling"
 	label.text = currentState
 	var moveSpeed : int = defaultSpeed
