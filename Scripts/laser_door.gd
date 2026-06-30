@@ -57,8 +57,9 @@ func setPartPosition(part : AnimatedSprite2D, i : int):
 			part.rotation = deg_to_rad(90.0)
 
 func _on_laser_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and color == "red" or body.is_in_group("moveable") and color == "blue":
-		body.queue_free()
+	if isOn == true:
+		if body.is_in_group("player") and color == "red" or body.is_in_group("moveable") and color == "blue":
+			body.queue_free()
 
 func toggleAnimation():
 	for childId in doorBody.get_child_count():

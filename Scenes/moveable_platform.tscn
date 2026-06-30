@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://coq0qpvwhj22p"]
+
+[ext_resource type="Texture2D" uid="uid://bet45iexm0fre" path="res://ASSETS/Tilesets/Platforms.png" id="1_ieq6h"]
+[ext_resource type="Script" uid="uid://bvd7na16m15xc" path="res://Scripts/moveable_platform.gd" id="1_n246d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n246d"]
+atlas = ExtResource("1_ieq6h")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycvks"]
+size = Vector2(43, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3sps"]
+atlas = ExtResource("1_ieq6h")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj356"]
+size = Vector2(48, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vqvs"]
+atlas = ExtResource("1_ieq6h")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyjw6"]
+size = Vector2(43, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgcny"]
+atlas = ExtResource("1_ieq6h")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4jbw"]
+size = Vector2(38, 26)
+
+[sub_resource type="Curve2D" id="Curve2D_n246d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 25, 20, 0, 0, 0, 0, 58, 48, 0, 0, 0, 0, 123, 58, 0, 0, 0, 0, 203, 54, 0, 0, 0, 0, 205, 9, 0, 0, 0, 0, 160, -32, 0, 0, 0, 0, 60, -15)
+}
+point_count = 7
+
+[node name="moveable_platform" type="Node2D" unique_id=666881904]
+script = ExtResource("1_n246d")
+orientation = "vertical"
+
+[node name="hidden" type="Node2D" parent="." unique_id=846120488]
+visible = false
+
+[node name="firstPart" type="AnimatableBody2D" parent="hidden" unique_id=1262284529]
+
+[node name="texture" type="Sprite2D" parent="hidden/firstPart" unique_id=380552473]
+texture = SubResource("AtlasTexture_n246d")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/firstPart" unique_id=1757520737]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_ycvks")
+
+[node name="middlePart" type="AnimatableBody2D" parent="hidden" unique_id=556785482]
+position = Vector2(48, 0)
+
+[node name="texture" type="Sprite2D" parent="hidden/middlePart" unique_id=341229380]
+texture = SubResource("AtlasTexture_v3sps")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/middlePart" unique_id=1239542189]
+shape = SubResource("RectangleShape2D_xj356")
+
+[node name="lastPart" type="AnimatableBody2D" parent="hidden" unique_id=1056259376]
+position = Vector2(96, 0)
+
+[node name="texture" type="Sprite2D" parent="hidden/lastPart" unique_id=1006083250]
+texture = SubResource("AtlasTexture_3vqvs")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/lastPart" unique_id=1433915460]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_iyjw6")
+
+[node name="singlePart" type="AnimatableBody2D" parent="hidden" unique_id=1608786059]
+
+[node name="texture" type="Sprite2D" parent="hidden/singlePart" unique_id=1384713241]
+texture = SubResource("AtlasTexture_hgcny")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/singlePart" unique_id=1403224502]
+shape = SubResource("RectangleShape2D_b4jbw")
+
+[node name="platformBody" type="Node2D" parent="." unique_id=500549306]
+visible = false
+
+[node name="TEST" type="Node2D" parent="." unique_id=2050648382]
+
+[node name="Path2D" type="Path2D" parent="TEST" unique_id=1282351926]
+curve = SubResource("Curve2D_n246d")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="TEST/Path2D" unique_id=2029523150]
+position = Vector2(25, 20)
+rotation = -1.5707964
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="TEST/Path2D/PathFollow2D" unique_id=915933711]
+remote_path = NodePath("../../../singlePart")
+
+[node name="singlePart" type="AnimatableBody2D" parent="TEST" unique_id=909673315]
+position = Vector2(25, 20)
+rotation = -1.5707964
+
+[node name="texture" type="Sprite2D" parent="TEST/singlePart" unique_id=219136686]
+texture = SubResource("AtlasTexture_hgcny")
+
+[node name="collision" type="CollisionShape2D" parent="TEST/singlePart" unique_id=1101848546]
+shape = SubResource("RectangleShape2D_b4jbw")
