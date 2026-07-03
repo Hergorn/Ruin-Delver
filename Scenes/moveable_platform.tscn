@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bet45iexm0fre" path="res://ASSETS/Tilesets/Platforms.png" id="1_ieq6h"]
 [ext_resource type="Script" uid="uid://bvd7na16m15xc" path="res://Scripts/moveable_platform.gd" id="1_n246d"]
 
+[sub_resource type="Curve2D" id="Curve2D_n246d"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n246d"]
 atlas = ExtResource("1_ieq6h")
 region = Rect2(0, 0, 48, 48)
@@ -31,18 +33,28 @@ region = Rect2(144, 0, 48, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4jbw"]
 size = Vector2(38, 26)
 
-[sub_resource type="Curve2D" id="Curve2D_n246d"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 25, 20, 0, 0, 0, 0, 58, 48, 0, 0, 0, 0, 123, 58, 0, 0, 0, 0, 203, 54, 0, 0, 0, 0, 205, 9, 0, 0, 0, 0, 160, -32, 0, 0, 0, 0, 60, -15)
-}
-point_count = 7
-
-[node name="moveable_platform" type="Node2D" unique_id=666881904]
+[node name="moveable_platform" type="Path2D" unique_id=545023247]
+curve = SubResource("Curve2D_n246d")
 script = ExtResource("1_n246d")
-orientation = "vertical"
+length = 3
+orientation = "horizontal"
+pathOrientation = "vertical"
+pathLength = 6
+speed = 0.3
+
+[node name="PathFollow" type="PathFollow2D" parent="." unique_id=2029523150]
+rotates = false
+loop = false
+
+[node name="RemoteTransform" type="RemoteTransform2D" parent="PathFollow" unique_id=915933711]
+remote_path = NodePath("../../platformBody")
+
+[node name="platformBody" type="Node2D" parent="." unique_id=245065053]
+
+[node name="Camera2D" type="Camera2D" parent="platformBody" unique_id=200868067]
+zoom = Vector2(1.5, 1.5)
 
 [node name="hidden" type="Node2D" parent="." unique_id=846120488]
-visible = false
 
 [node name="firstPart" type="AnimatableBody2D" parent="hidden" unique_id=1262284529]
 
@@ -78,31 +90,4 @@ shape = SubResource("RectangleShape2D_iyjw6")
 texture = SubResource("AtlasTexture_hgcny")
 
 [node name="collision" type="CollisionShape2D" parent="hidden/singlePart" unique_id=1403224502]
-shape = SubResource("RectangleShape2D_b4jbw")
-
-[node name="platformBody" type="Node2D" parent="." unique_id=500549306]
-visible = false
-
-[node name="TEST" type="Node2D" parent="." unique_id=2050648382]
-
-[node name="Path2D" type="Path2D" parent="TEST" unique_id=1282351926]
-curve = SubResource("Curve2D_n246d")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="TEST/Path2D" unique_id=2029523150]
-position = Vector2(25, 20)
-rotation = -1.5707964
-rotates = false
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="TEST/Path2D/PathFollow2D" unique_id=915933711]
-remote_path = NodePath("../../../singlePart")
-
-[node name="singlePart" type="AnimatableBody2D" parent="TEST" unique_id=909673315]
-position = Vector2(25, 20)
-rotation = -1.5707964
-
-[node name="texture" type="Sprite2D" parent="TEST/singlePart" unique_id=219136686]
-texture = SubResource("AtlasTexture_hgcny")
-
-[node name="collision" type="CollisionShape2D" parent="TEST/singlePart" unique_id=1101848546]
 shape = SubResource("RectangleShape2D_b4jbw")
