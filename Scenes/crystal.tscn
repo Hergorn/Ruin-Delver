@@ -70,6 +70,6 @@ animations = [{
 
 [node name="crystal" type="AnimatedSprite2D" unique_id=1980050896]
 sprite_frames = SubResource("SpriteFrames_yg7jq")
-animation = &"horizontal off"
+animation = &"vertical on"
 script = ExtResource("2_vacj6")
 direction = "horizontal"

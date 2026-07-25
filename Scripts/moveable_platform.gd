@@ -8,7 +8,7 @@ extends Node2D
 @export_enum("vertical", "horizontal") var pathOrientation : String
 @export var pathLength : int
 @export var customPath : bool
-@export var speed : float = 0.2
+@export var speed : float
 
 @onready var hide : Node2D = $hidden
 @onready var platformBody : Node2D = $platformBody
@@ -20,6 +20,8 @@ extends Node2D
 @onready var forwardDirection = 1
 @onready var path : Path2D = $"."
 @onready var crystal = preload("res://Scenes/crystal.tscn").instantiate()
+@onready var idState : bool
+@onready var OnSpeed : float
 
 func _ready() -> void:
 	hide.visible = false
@@ -28,10 +30,13 @@ func _ready() -> void:
 		child.position.y = 0
 	aufbau()
 	if customPath == false: createPath()
-	if needsSwitch == true: platformBody.add_child(crystal)
-
-		
-	
+	if needsSwitch == true: 
+		crystal.position = Vector2(length * 24 - 24, 0)
+		crystal.id = id
+		crystal.scale = Vector2(0.6, 0.6)
+		platformBody.add_child(crystal)
+		idState = MechanismConnector.checkStatus(id)
+	OnSpeed = speed
 
 func aufbau():
 	if length == 0: length = 1
@@ -59,7 +64,13 @@ func setPartPosition(part : StaticBody2D, i : int):
 			part.rotation = deg_to_rad(90.0)
 
 func _process(delta: float) -> void:
-	pass
+	var checkState : bool = MechanismConnector.checkStatus(id)
+	if idState != checkState:
+		idState = checkState
+		toggleOn()
+	match isOn:
+		true: speed = OnSpeed
+		false: speed = 0.0
 
 func _physics_process(delta: float) -> void:
 	pathfollow.progress_ratio += speed * delta * forwardDirection
@@ -68,10 +79,14 @@ func _physics_process(delta: float) -> void:
 		forwardDirection = -1
 	elif forwardDirection == -1 and pathfollow.progress_ratio == 0: 
 		forwardDirection = 1
-	print(platformBody.position)
 
 func createPath():
 	for i in pathLength:
 		match pathOrientation:
 			"horizontal":  path.curve.add_point(Vector2(i*48,0))
 			"vertical": path.curve.add_point(Vector2(0,i*-48))
+			
+func toggleOn():
+	match isOn:
+		true: isOn = false
+		false: isOn = true
