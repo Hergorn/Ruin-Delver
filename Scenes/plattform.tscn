@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://d0id4buvq3ou1"]
+
+[ext_resource type="Script" uid="uid://b7af8h2vkr7gh" path="res://Scripts/plattform.gd" id="1_gheqw"]
+[ext_resource type="Texture2D" uid="uid://bet45iexm0fre" path="res://ASSETS/Tilesets/Platforms.png" id="1_wxcdd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xegxw"]
+atlas = ExtResource("1_wxcdd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8c06"]
+size = Vector2(43, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur8wv"]
+atlas = ExtResource("1_wxcdd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68vam"]
+size = Vector2(48, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmjg4"]
+atlas = ExtResource("1_wxcdd")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbsdg"]
+size = Vector2(43, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kurux"]
+atlas = ExtResource("1_wxcdd")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8upe"]
+size = Vector2(38, 26)
+
+[node name="Plattform" type="Node2D" unique_id=1646352546]
+script = ExtResource("1_gheqw")
+isOn = true
+length = 4
+orientation = "horizontal"
+pathLength = 3
+
+[node name="hidden" type="Node2D" parent="." unique_id=1361172089]
+
+[node name="firstPart" type="AnimatableBody2D" parent="hidden" unique_id=457929550]
+
+[node name="texture" type="Sprite2D" parent="hidden/firstPart" unique_id=1822631605]
+texture = SubResource("AtlasTexture_xegxw")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/firstPart" unique_id=827983758]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_q8c06")
+
+[node name="middlePart" type="AnimatableBody2D" parent="hidden" unique_id=220878183]
+position = Vector2(48, 0)
+
+[node name="texture" type="Sprite2D" parent="hidden/middlePart" unique_id=1646220882]
+texture = SubResource("AtlasTexture_ur8wv")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/middlePart" unique_id=1086715195]
+shape = SubResource("RectangleShape2D_68vam")
+
+[node name="lastPart" type="AnimatableBody2D" parent="hidden" unique_id=1974845726]
+position = Vector2(96, 0)
+
+[node name="texture" type="Sprite2D" parent="hidden/lastPart" unique_id=671339160]
+texture = SubResource("AtlasTexture_kmjg4")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/lastPart" unique_id=1913949395]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_mbsdg")
+
+[node name="singlePart" type="AnimatableBody2D" parent="hidden" unique_id=1649120209]
+
+[node name="texture" type="Sprite2D" parent="hidden/singlePart" unique_id=564000569]
+texture = SubResource("AtlasTexture_kurux")
+
+[node name="collision" type="CollisionShape2D" parent="hidden/singlePart" unique_id=1564705396]
+shape = SubResource("RectangleShape2D_a8upe")
+
+[node name="platformBody" type="Node2D" parent="." unique_id=952937436]

@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cj02x1g43ik03" path="res://Scenes/conveyor.tscn" id="5_o0jjj"]
 [ext_resource type="PackedScene" uid="uid://dn2pac8ej6fo2" path="res://Scenes/canon.tscn" id="6_uxcei"]
 [ext_resource type="PackedScene" uid="uid://dltocjjww6vgv" path="res://Scenes/laser_door.tscn" id="7_a15nj"]
-[ext_resource type="PackedScene" uid="uid://coq0qpvwhj22p" path="res://Scenes/moveable_platform.tscn" id="8_4yy1u"]
+[ext_resource type="PackedScene" uid="uid://d0id4buvq3ou1" path="res://Scenes/plattform.tscn" id="8_4yy1u"]
+[ext_resource type="PackedScene" uid="uid://bgal7qtj7o3ox" path="res://Scenes/button.tscn" id="9_eiwau"]
 
 [node name="MainMap" type="Node2D" unique_id=820204691]
 
@@ -57,15 +58,19 @@ orientation = "vertical"
 id = 1
 needsSwitch = true
 
-[node name="moveable_platform" parent="MapHolder/Map/Interactables" unique_id=545023247 instance=ExtResource("8_4yy1u")]
-position = Vector2(1085, 94)
-length = 3
+[node name="Plattform" parent="MapHolder/Map/Interactables" unique_id=1646352546 instance=ExtResource("8_4yy1u")]
+position = Vector2(1089, 94)
+isOn = false
 needsSwitch = true
-id = 1
-pathLength = 4
+id = 2
+duration = 4.0
+direction = "up"
+
+[node name="button" parent="MapHolder/Map/Interactables" unique_id=687189488 instance=ExtResource("9_eiwau")]
+position = Vector2(1017, 73)
 
 [node name="Player" parent="MapHolder/Map" unique_id=383691327 instance=ExtResource("2_k5tye")]
-position = Vector2(944, -32)
+position = Vector2(944, -24)
 slide_on_ceiling = false
 safe_margin = 0.001
 pushForce = 40

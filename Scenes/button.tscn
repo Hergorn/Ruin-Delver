@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bgal7qtj7o3ox"]
+
+[ext_resource type="Script" uid="uid://bpk8fhxwpqde8" path="res://Scripts/button.gd" id="1_0kpiu"]
+[ext_resource type="Texture2D" uid="uid://c0vvh2bw4fe8" path="res://ASSETS/Tilesets/Knopf_Schalter.png" id="1_1cmwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl62i"]
+atlas = ExtResource("1_1cmwl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i5pr"]
+atlas = ExtResource("1_1cmwl")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i5pr"]
+size = Vector2(42, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl62i"]
+size = Vector2(34, 7.5)
+
+[node name="button" type="Node2D" unique_id=687189488]
+script = ExtResource("1_0kpiu")
+
+[node name="buttonTop" type="AnimatableBody2D" parent="." unique_id=1640937435]
+position = Vector2(0, -24)
+
+[node name="bTSprite" type="Sprite2D" parent="buttonTop" unique_id=1884953871]
+texture = SubResource("AtlasTexture_xl62i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="buttonTop" unique_id=1981264281]
+polygon = PackedVector2Array(-21, 21, -15, 15, 15, 15, 21, 21)
+
+[node name="buttonGround" type="StaticBody2D" parent="." unique_id=1770021499]
+position = Vector2(0, -24)
+
+[node name="bGSprite" type="Sprite2D" parent="buttonGround" unique_id=1415092960]
+texture = SubResource("AtlasTexture_8i5pr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="buttonGround" unique_id=1304305169]
+position = Vector2(0, 22.5)
+shape = SubResource("RectangleShape2D_8i5pr")
+
+[node name="playerArea" type="Area2D" parent="." unique_id=465840218]
+position = Vector2(0, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerArea" unique_id=134327284]
+position = Vector2(0, 17.25)
+shape = SubResource("RectangleShape2D_xl62i")
+
+[connection signal="body_entered" from="playerArea" to="." method="_on_player_area_body_entered"]
+[connection signal="body_exited" from="playerArea" to="." method="_on_player_area_body_exited"]

@@ -119,6 +119,8 @@ func slope():
 				destinationY = collider.position.y - 24.0
 			#wenn der rayCast oben nichts erkennt und ledge nicht zu hoch ist
 			#Das ist wichtig, weil der RayCast unten sonst auch eine Bodenkollision erkennt wenn eine Box geschoben wird
+			print(destinationY)
+			print(position.y)
 			if groundCollision == true and abs(collisionHight) < 5.0:
 				position.y = destinationY
 				groundCollision = false
