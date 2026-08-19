@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h806f"]
 size = Vector2(44, 44)
 
-[node name="Object" type="RigidBody2D" unique_id=1576696864]
-gravity_scale = 3.051
+[node name="Object" type="RigidBody2D" unique_id=753662649]
+mass = 2.0
+contact_monitor = true
+max_contacts_reported = 100
 script = ExtResource("1_h806f")
 objectMaterial = "wood"
 objectType = "box"

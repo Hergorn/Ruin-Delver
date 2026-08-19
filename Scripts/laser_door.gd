@@ -46,7 +46,6 @@ func aufbau():
 			1: newPart =  lastPart.duplicate()
 			_: newPart =  middlePart.duplicate()
 		setPartPosition(newPart, i)
-		print(newPart.position)
 		doorBody.add_child(newPart)
 
 func setPartPosition(part : AnimatedSprite2D, i : int):

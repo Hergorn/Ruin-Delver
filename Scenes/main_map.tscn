@@ -29,14 +29,12 @@ tile_set = ExtResource("1_1vevx")
 position = Vector2(-153, -70)
 
 [node name="Object" parent="MapHolder/Map/Interactables" unique_id=2085304473 instance=ExtResource("3_1vevx")]
-position = Vector2(577, -306)
-mass = 2.0
-gravity_scale = 1.0
-lock_rotation = true
+position = Vector2(843, 32)
+freeze_mode = 1
+contact_monitor = true
 
 [node name="mechanism" parent="MapHolder/Map/Interactables" unique_id=136429359 instance=ExtResource("3_tvgjd")]
 position = Vector2(561, 110)
-id = 1
 
 [node name="fallingGate" parent="MapHolder/Map/Interactables" unique_id=193519265 instance=ExtResource("4_f4xrl")]
 position = Vector2(754, 94)
@@ -68,9 +66,10 @@ direction = "up"
 
 [node name="button" parent="MapHolder/Map/Interactables" unique_id=687189488 instance=ExtResource("9_eiwau")]
 position = Vector2(1017, 73)
+id = 1
 
 [node name="Player" parent="MapHolder/Map" unique_id=383691327 instance=ExtResource("2_k5tye")]
-position = Vector2(944, -24)
+position = Vector2(865, -46)
 slide_on_ceiling = false
 safe_margin = 0.001
 pushForce = 40

@@ -8,3 +8,6 @@ extends RigidBody2D
 
 func _ready() -> void:
 	add_to_group("moveable")
+
+func _physics_process(delta: float) -> void:
+	print(get_colliding_bodies())

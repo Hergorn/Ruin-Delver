@@ -14,6 +14,7 @@ extends Node2D
 @onready var hide : Node2D = $hidden
 @onready var shapeCollision : CollisionShape2D
 @onready var idState : bool
+@onready var physicsArea : Area2D = $PhysicsArea
 
 var conveyorParts : Array[StaticBody2D]
 var lastState : bool
@@ -29,7 +30,7 @@ func _ready() -> void:
 		var newPart : StaticBody2D
 		match currentPart:
 			length: 
-				newPart =  leftPart.duplicate()
+				newPart = leftPart.duplicate()
 				for child in newPart.get_children():
 					if child.name == "conveyorCollision": shapeCollision = child
 			1: newPart =  rightPart.duplicate()
@@ -37,7 +38,7 @@ func _ready() -> void:
 		newPart.position.x = i * 48
 		conveyorBody.add_child(newPart)
 		conveyorParts.append(newPart)
-	shapeCollision.visible = false
+	#shapeCollision.visible = false
 	#Einschalten falls kein Mechanismus betätigt werden muss
 	power(isOn)
 	lastState = isOn
@@ -47,7 +48,11 @@ func _ready() -> void:
 	#COLLISION
 	shapeCollision.position.x = shapeCollision.position.x + newPosition
 	shapeCollision.shape.height = shapeCollision.shape.height + newHeight
+	#physicsArea.add_child(shapeCollision.duplicate())
 	idState = MechanismConnector.checkStatus(id)
+	
+	#for child in hide.get_children(): child.free()
+	#hide.free()
 
 func power(on : bool):
 	var state : String
@@ -62,13 +67,14 @@ func power(on : bool):
 			if child.name == "animation": child.play(state)
 		if direction == "left": currentSpeed = currentSpeed - 2 * currentSpeed
 		part.constant_linear_velocity.x = currentSpeed
-		print(part.constant_linear_velocity.x)
 
 func _process(delta: float) -> void:
 	if needsSwitch == true:
 		if MechanismConnector.checkStatus(id) != idState:
 			toggleOn()
 			idState = MechanismConnector.checkStatus(id)
+
+func _physics_process(delta: float) -> void:
 	if isOn != lastState:
 		power(isOn)
 		lastState = isOn
